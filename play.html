@@ -1,47 +1,78 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>Connect Four Game | Jmrashed</title>
-    <meta name="description" content="A simple web-based implementation of the classic Connect Four game using HTML, CSS, and JavaScript.">
-    <meta name="author" content="Md Rasheduzzaman">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- Open Graph meta tags for social media sharing -->
-    <meta property="og:title" content="Connect Four Game">
-    <meta property="og:description" content="Play the classic Connect Four game online.">
-    <meta property="og:image" content="screenshot.png">
-    <meta property="og:url" content="https://yourwebsite.com">
-    <meta property="og:type" content="website">
-    
-    <!-- Twitter Card meta tags for Twitter sharing -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Connect Four Game">
-    <meta name="twitter:description" content="Play the classic Connect Four game online.">
-    <meta name="twitter:image" content="screenshot.png">
-    
-    <!-- Favicon -->
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <title>Connect Four Game | Jmrashed</title>
+  <meta name="description"
+    content="A simple web-based implementation of the classic Connect Four game using HTML, CSS, and JavaScript.">
+  <meta name="author" content="Md Rasheduzzaman">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- Open Graph meta tags for social media sharing -->
+  <meta property="og:title" content="Connect Four Game">
+  <meta property="og:description" content="Play the classic Connect Four game online.">
+  <meta property="og:image" content="screenshot.png">
+  <meta property="og:url" content="https://yourwebsite.com">
+  <meta property="og:type" content="website">
+
+  <!-- Twitter Card meta tags for Twitter sharing -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Connect Four Game">
+  <meta name="twitter:description" content="Play the classic Connect Four game online.">
+  <meta name="twitter:image" content="screenshot.png">
+
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <style>
+    aside {
+      width: 200px;
+      max-width: 200px;
+      position: absolute;
+      bottom: 100px;
+      right: 0;
+      background-color: #957af7;
+      padding: 20px;
+      box-shadow: -5px 0 10px rgba(0, 0, 0, 0.1);
+      z-index: 9999 !important;
+      max-height: 500px !important;
+      overflow-y: auto;
+    }
+
+    .winner-item {
+      margin-bottom: 10px;
+      border-bottom: 1px solid #b5a1fd;
+      padding: 10px;
+    }
+  </style>
 </head>
+
 <body>
-    <h1>Hello <span id="username"></span>! </h1>
-    <h1>Welcome to Connect Four Game</h1>
-    <p class="info">Connect four is two player game. Use chrome for best experience.</p>
-    <div id="game-base">
-      <div id="game-table">
-        
-      </div>
-    </div><!-- end base -->
- 
+  <h1>Hello <span id="username"></span>! </h1>
+  <h1>Welcome to Connect Four Game</h1>
+  <p class="info">Connect four is two player game. Use chrome for best experience.</p>
+  <div id="game-base">
+    <div id="game-table">
 
-    <p class="info" style="margin-top: 35px;">Developed By <a href="https://github.com/jmrashed" target="_blank">Md Rasheduzzaman</a> </p>
-    <script src="script.js"></script>
+    </div>
+  </div><!-- end base -->
 
-<section class="sticky">
+
+  <p class="info" style="margin-top: 35px;">Developed By <a href="https://github.com/jmrashed" target="_blank">Md
+      Rasheduzzaman</a> </p>
+
+
+  <aside>
+    <h2 class="text-center">Winner List</h2>
+    <nav id="winnersList">
+    </nav>
+  </aside>
+
+  <script src="script.js"></script>
+
+  <section class="sticky">
     <div class="bubbles">
-        <div class="bubble"></div>
       <div class="bubble"></div>
       <div class="bubble"></div>
       <div class="bubble"></div>
@@ -51,18 +82,20 @@
       <div class="bubble"></div>
       <div class="bubble"></div>
       <div class="bubble"></div>
-      
+      <div class="bubble"></div>
+
     </div>
   </section>
 
   <script>
-     var savedName = sessionStorage.getItem("username");
-        if (savedName) {
-            document.getElementById("username").textContent = savedName;
-        }
+    var savedName = sessionStorage.getItem("username");
+    if (savedName) {
+      document.getElementById("username").textContent = savedName;
+    }
 
 
 
   </script>
 </body>
+
 </html>
