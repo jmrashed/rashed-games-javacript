@@ -154,17 +154,29 @@ function dropDisc(cid,player){
   checkForMoveVictory();
 }
 
-function checkForMoveVictory(){
-  if(!checkForVictory(currentRow,currentCol)){
-    placeDisc(3-currentPlayer);
-  } else {
-    var ww = currentPlayer == 2 ? 'Computer' : 'Player';
-    placeDisc(3-currentPlayer);
-    alert(ww+" win!");
-    board.innerHTML = "";
-    newgame();
+function checkForMoveVictory() {
+    if (!checkForVictory(currentRow, currentCol)) {
+      placeDisc(3 - currentPlayer);
+    } else {
+      var ww = currentPlayer == 2 ? 'Computer' : 'Player';
+      placeDisc(3 - currentPlayer);
+ 
+
+      Swal.fire({
+        title: ww + " wins!!",
+        icon: "success",
+        confirmButtonText: "OK",
+        position: "bottom"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // Reset the game board and start a new game
+          board.innerHTML = "";
+          newgame();
+        }
+      });
+    }
   }
-}
+  
 
 function placeDisc(player){
   currentPlayer = player;
