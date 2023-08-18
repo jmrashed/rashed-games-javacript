@@ -5,7 +5,7 @@ A simple web-based implementation of the classic Connect Four game using HTML, C
 ![Connect Four Screenshot](screenshot.png)
 
 # Live
-<img src="play.gif">
+<img src="play.gif" style="width:100%">
 
 
 ## How to Play
