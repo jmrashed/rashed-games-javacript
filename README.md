@@ -4,6 +4,10 @@ A simple web-based implementation of the classic Connect Four game using HTML, C
 
 ![Connect Four Screenshot](screenshot.png)
 
+# Live
+[![Watch Live](screenshot.png)](overview.mp4)
+
+
 ## How to Play
 
 1. Open the `index.html` file in a web browser to start the game.
