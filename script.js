@@ -172,14 +172,12 @@ function checkForMoveVictory() {
       Swal.fire({
         title: ww + " wins!!",
         icon: "success",
-        confirmButtonText: "OK",
+        confirmButtonText: "Start Again !",
         position: "bottom"
       }).then((result) => {
-        if (result.isConfirmed) {
-          // Reset the game board and start a new game
+       
           board.innerHTML = "";
           newgame();
-        }
       });
     }
   }

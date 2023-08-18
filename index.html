@@ -69,14 +69,30 @@
                 transform: translateY(0);
             }
         }
+
+        .img-responsive {
+            width: 400px;
+        }
     </style>
 </head>
 
 <body>
     <div class="container mt-5">
-        <label for="name">Enter your name: </label>
-        <input type="text" id="name" class="form-control">
-        <button class="btn btn-primary mt-2" onclick="saveName()">Save</button>
+        <div class="row">
+            <div class="col-lg-7">
+                <h1>Welcome to Connect Four Game</h1>
+                <p class="info">Connect four is two player game. Use chrome for best experience.</p>
+                <label for="name">Enter your name: </label>
+                <input type="text" id="name" class="form-control">
+                <button class="btn btn-primary mt-2" onclick="saveName()">Save</button>
+            </div>
+            <div class="col-lg-5">
+                <img src="game.webp" class="img img-responsive" alt="">
+
+            </div>
+        </div>
+
+
     </div>
 
     <script>
@@ -104,7 +120,8 @@
                 customClass: {
                     popup: 'slow-fade-in' // Apply the CSS class for animation
                 },
-                timer: 2000 // Automatically close after 2 seconds
+                timer: 2000,
+                position: "bottom"
             });
         }
     </script>
