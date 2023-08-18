@@ -1,56 +1,118 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Connect Four Game | Jmrashed</title>
-    <meta name="description" content="A simple web-based implementation of the classic Connect Four game using HTML, CSS, and JavaScript.">
+    <meta name="description"
+        content="A simple web-based implementation of the classic Connect Four game using HTML, CSS, and JavaScript.">
     <meta name="author" content="Md Rasheduzzaman">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <!-- Open Graph meta tags for social media sharing -->
     <meta property="og:title" content="Connect Four Game">
     <meta property="og:description" content="Play the classic Connect Four game online.">
     <meta property="og:image" content="screenshot.png">
     <meta property="og:url" content="https://yourwebsite.com">
     <meta property="og:type" content="website">
-    
+
     <!-- Twitter Card meta tags for Twitter sharing -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Connect Four Game">
     <meta name="twitter:description" content="Play the classic Connect Four game online.">
     <meta name="twitter:image" content="screenshot.png">
-    
+
     <!-- Favicon -->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <!-- Add Bootstrap CSS CDN link -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        /* Apply dark mode styles */
+        body {
+            background-color: #343a40;
+            color: #ffffff;
+        }
 
+        .container {
+            background-color: #495057;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .form-control {
+            background-color: #6c757d;
+            color: #ffffff;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+
+        .slow-fade-in {
+            animation: slow-fade 2s ease-in-out;
+        }
+
+        @keyframes slow-fade {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
+
 <body>
-    <h1>Connect Four Game</h1>
-    <p class="info">Connect four is two player game. Use chrome for best experience.</p>
-    <div id="game-base">
-      <div id="game-table">
-        
-      </div>
-    </div><!-- end base -->
-
-    <p class="info">Developed By <a href="https://github.com/jmrashed" target="_blank">Md Rasheduzzaman</a> </p>
-    <script src="script.js"></script>
-
-<section class="sticky">
-    <div class="bubbles">
-        <div class="bubble"></div>
-      <div class="bubble"></div>
-      <div class="bubble"></div>
-      <div class="bubble"></div>
-      <div class="bubble"></div>
-      <div class="bubble"></div>
-      <div class="bubble"></div>
-      <div class="bubble"></div>
-      <div class="bubble"></div>
-      <div class="bubble"></div>
-      
+    <div class="container mt-5">
+        <label for="name">Enter your name: </label>
+        <input type="text" id="name" class="form-control">
+        <button class="btn btn-primary mt-2" onclick="saveName()">Save</button>
     </div>
-  </section>
+
+    <script>
+        function saveName() {
+            var name = document.getElementById("name").value;
+            if (name.trim() !== "") {
+                sessionStorage.setItem("username", name);
+                window.location.href = "play.html";
+            } else {
+                alert("Please enter a valid name.");
+            }
+        }
+
+        // Check if a name is already saved in session and display a greeting.
+        var savedName = sessionStorage.getItem("username");
+        if (savedName) {
+            document.getElementById("name").value = savedName;
+
+
+            Swal.fire({
+                icon: 'info',
+                title: 'Mr. ' + savedName,
+                text: "Welcome to back to 4 connect game",
+                showConfirmButton: false,
+                customClass: {
+                    popup: 'slow-fade-in' // Apply the CSS class for animation
+                },
+                timer: 2000 // Automatically close after 2 seconds
+            });
+        }
+    </script>
+
+    <!-- Add Bootstrap JS CDN link (optional, for enhanced functionality) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+
 </html>

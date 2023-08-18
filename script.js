@@ -159,7 +159,13 @@ function checkForMoveVictory() {
     if (!checkForVictory(currentRow, currentCol)) {
       placeDisc(3 - currentPlayer);
     } else {
-      var ww = currentPlayer == 2 ? 'Computer' : 'Player';
+      var savedName = sessionStorage.getItem("username");
+      if (savedName) {
+          document.getElementById("username").textContent = savedName;
+      }else{
+        savedName = "Player";
+      }
+      var ww = currentPlayer == 2 ? 'Computer' : savedName;
       placeDisc(3 - currentPlayer);
  
 
