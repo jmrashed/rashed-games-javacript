@@ -6,6 +6,9 @@ A simple web-based implementation of the classic Connect Four game using HTML, C
 ![Screenshot 2](assets/img/screenshot.png)
 
 # Live
+Demo Link: [https://jmrashed-game.vercel.app/](https://jmrashed-game.vercel.app/)
+
+
 <img src="./assets/img/play.gif" style="width:100%">
 
 
