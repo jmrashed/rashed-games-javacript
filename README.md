@@ -2,11 +2,11 @@
 
 A simple web-based implementation of the classic Connect Four game using HTML, CSS, and JavaScript.
 
-![Screenshot 1](screenshot1.png)
-![Screenshot 2](screenshot.png)
+![Screenshot 1](assets/img/screenshot1.png)
+![Screenshot 2](assets/img/screenshot.png)
 
 # Live
-<img src="play.gif" style="width:100%">
+<img src="./assets/img/play.gif" style="width:100%">
 
 
 ## How to Play

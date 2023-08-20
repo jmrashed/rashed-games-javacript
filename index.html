@@ -19,61 +19,16 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Connect Four Game">
     <meta name="twitter:description" content="Play the classic Connect Four game online.">
-    <meta name="twitter:image" content="screenshot.png">
+    <meta name="twitter:image" content="./assets/img/screenshot.png">
 
     <!-- Favicon -->
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="./assets/img/favicon.ico" type="image/x-icon">
     <!-- Add Bootstrap CSS CDN link -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <style>
-        /* Apply dark mode styles */
-        body {
-            background-color: #343a40;
-            color: #ffffff;
-        }
 
-        .container {
-            background-color: #495057;
-            padding: 20px;
-            border-radius: 10px;
-        }
+    <link rel="stylesheet" href="./assets/css/styles.css">
 
-        .form-control {
-            background-color: #6c757d;
-            color: #ffffff;
-        }
-
-        .btn-primary {
-            background-color: #007bff;
-            border-color: #007bff;
-        }
-
-        .btn-primary:hover {
-            background-color: #0056b3;
-            border-color: #0056b3;
-        }
-
-        .slow-fade-in {
-            animation: slow-fade 2s ease-in-out;
-        }
-
-        @keyframes slow-fade {
-            0% {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .img-responsive {
-            width: 400px;
-        }
-    </style>
 </head>
 
 <body>
@@ -87,27 +42,24 @@
                 <button class="btn btn-primary mt-2" onclick="saveName()">Save</button>
             </div>
             <div class="col-lg-5">
-                <img src="game.webp" class="img img-responsive" alt="">
-
+                <img src="./assets/img/game.webp" class="img img-responsive" alt="">
             </div>
         </div>
-
-
     </div>
+    <!-- Add Bootstrap JS CDN link (optional, for enhanced functionality) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script src="./assets/js/script.js"></script>
 
     <script>
-        function saveName() {
-            var name = document.getElementById("name").value;
-            if (name.trim() !== "") {
-                sessionStorage.setItem("username", name);
-                window.location.href = "play.html";
-            } else {
-                alert("Please enter a valid name.");
-            }
-        }
-
         // Check if a name is already saved in session and display a greeting.
         var savedName = sessionStorage.getItem("username");
+        if (savedName === null) {
+            savedName = "player";
+        }
+
         if (savedName) {
             document.getElementById("name").value = savedName;
 
@@ -124,12 +76,8 @@
                 position: "bottom"
             });
         }
-    </script>
 
-    <!-- Add Bootstrap JS CDN link (optional, for enhanced functionality) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </script>
 </body>
 
 </html>

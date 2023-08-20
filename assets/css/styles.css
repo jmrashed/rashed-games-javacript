@@ -29,7 +29,7 @@ body{
     width:434px;
     height:374px;
     margin:0 auto;
-    background:url("base.png") 0 0 no-repeat;
+    background:url("../img/base.png") 0 0 no-repeat;
     position:relative;
   }
   
@@ -187,4 +187,75 @@ body{
 }
 .custom-button:hover {
     background-color: #218838;
+}
+
+
+/* homepage  */
+body {
+  background-color: #343a40;
+  color: #ffffff;
+}
+
+.container {
+  background-color: #495057;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.form-control {
+  background-color: #6c757d;
+  color: #ffffff;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+.slow-fade-in {
+  animation: slow-fade 2s ease-in-out;
+}
+
+@keyframes slow-fade {
+  0% {
+      opacity: 0;
+      transform: translateY(-20px);
+  }
+
+  100% {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+.img-responsive {
+  width: 400px;
+}
+
+
+
+/* play  */
+aside {
+  width: 200px;
+  max-width: 200px;
+  position: absolute;
+  bottom: 100px;
+  right: 0;
+  background-color: #957af7;
+  padding: 20px;
+  box-shadow: -5px 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 9999 !important;
+  max-height: 500px !important;
+  overflow-y: auto;
+}
+
+.winner-item {
+  margin-bottom: 10px;
+  border-bottom: 1px solid #b5a1fd;
+  padding: 10px;
 }

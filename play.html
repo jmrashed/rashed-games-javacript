@@ -22,30 +22,10 @@
   <meta name="twitter:image" content="screenshot.png">
 
   <!-- Favicon -->
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link rel="icon" href="./assets/img/favicon.ico" type="image/x-icon">
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <style>
-    aside {
-      width: 200px;
-      max-width: 200px;
-      position: absolute;
-      bottom: 100px;
-      right: 0;
-      background-color: #957af7;
-      padding: 20px;
-      box-shadow: -5px 0 10px rgba(0, 0, 0, 0.1);
-      z-index: 9999 !important;
-      max-height: 500px !important;
-      overflow-y: auto;
-    }
+  <link rel="stylesheet" type="text/css" href="./assets/css/styles.css">
 
-    .winner-item {
-      margin-bottom: 10px;
-      border-bottom: 1px solid #b5a1fd;
-      padding: 10px;
-    }
-  </style>
 </head>
 
 <body id="autoPlay">
@@ -69,7 +49,7 @@
     </nav>
   </aside>
 
-  <script src="script.js"></script>
+
 
   <section class="sticky">
     <div class="bubbles">
@@ -105,80 +85,7 @@
     Your browser does not support the audio element.
   </audio>
 
-
-  <script>
-    var savedName = sessionStorage.getItem("username");
-    if (savedName) {
-      document.getElementById("username").textContent = savedName;
-    }
-  </script>
-
-  <script>
-    const music = [
-      'music/1.mp3',
-      'music/2.mp3',
-      'music/3.mp3',
-      'music/4.mp3',
-      'music/5.mp3'
-    ];
-
-    var currentTrackIndex = Math.floor(Math.random() * music.length); // Generate a random index
-
-    var background = document.getElementById("background");
-    var autoPlay = document.getElementById("autoPlay");
-    var winMusic = document.getElementById("winMusic");
-    var loseMusic = document.getElementById("loseMusic");
-    var count =0 ;
-    background.volume = 0.5;
-    everyClick.volume = 0.8;
-
-
-    // Function to play the current background and move to the next track
-    function playNextTrack() {
-      background.src = music[currentTrackIndex];
-      background.currentTime = 0;
-      background.play();
-      currentTrackIndex = (currentTrackIndex + 1) % music.length; // Move to the next track
-    }
-
-    function playeveryClick() {
-      everyClick.src = "m.mp3";
-      everyClick.currentTime = 0;
-      everyClick.play();
-    }
-
-    function winMusicPlay() {
-      loseMusic.pause();
-      background.pause();
-      winMusic.src = "win.mp3";
-      winMusic.currentTime = 0;
-      winMusic.play();
-    }
-    function loseMusicPlay() {
-      background.pause();
-      winMusic.pause();
-      loseMusic.src = "end.mp3";
-      loseMusic.currentTime = 0;
-      loseMusic.play();
-    }
-
-    // Call the playNextTrack function when the background ends
-    background.addEventListener("ended", playNextTrack);
-
-    autoPlay.addEventListener("click", function () {
-      winMusic.pause();
-      playeveryClick();
-      if(count==0){
-        playNextTrack();
-        count ++;
-      }
-    });
-
-
-
-
-
-  </script>
+   <script src="./assets/js/script.js"></script>
 </body>
 
 </html>

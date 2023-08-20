@@ -5,6 +5,22 @@ var currentRow;
 var currentPlayer;
 var id = 1;
 
+const music = [
+  'assets/music/1.mp3',
+  'assets/music/2.mp3',
+  'assets/music/3.mp3',
+  'assets/music/4.mp3',
+  'assets/music/5.mp3'
+];
+
+var currentTrackIndex = Math.floor(Math.random() * music.length); // Generate a random index
+
+var background = document.getElementById("background");
+var autoPlay = document.getElementById("autoPlay");
+var winMusic = document.getElementById("winMusic");
+var loseMusic = document.getElementById("loseMusic");
+var count = 0;
+
 newgame();
 
 function newgame() {
@@ -185,6 +201,8 @@ function checkForMoveVictory() {
 
       board.innerHTML = "";
       newgame();
+      background.play();
+
     });
   }
 }
@@ -242,3 +260,67 @@ function displayWinners() {
 
 
 displayWinners();
+
+
+function saveName() {
+  var name = document.getElementById("name").value;
+  if (name.trim() !== "") {
+    sessionStorage.setItem("username", name);
+    window.location.href = "play.html";
+  } else {
+    alert("Please enter a valid name.");
+  }
+}
+
+
+
+var savedName = sessionStorage.getItem("username");
+if (savedName) {
+  document.getElementById("username").textContent = savedName;
+}
+
+background.volume = 0.5;
+everyClick.volume = 0.8;
+
+
+// Function to play the current background and move to the next track
+function playNextTrack() {
+  background.src = music[currentTrackIndex];
+  background.currentTime = 0;
+  background.play();
+  currentTrackIndex = (currentTrackIndex + 1) % music.length; // Move to the next track
+}
+
+function playeveryClick() {
+  everyClick.src = "m.mp3";
+  everyClick.currentTime = 0;
+  everyClick.play();
+}
+
+function winMusicPlay() {
+  loseMusic.pause();
+  background.pause();
+  winMusic.src = "assets/music/win.mp3";
+  winMusic.currentTime = 0;
+  winMusic.play();
+}
+function loseMusicPlay() {
+  background.pause();
+  winMusic.pause();
+  loseMusic.src = "assets/music/end.mp3";
+  loseMusic.currentTime = 0;
+  loseMusic.play();
+}
+
+// Call the playNextTrack function when the background ends
+background.addEventListener("ended", playNextTrack);
+
+autoPlay.addEventListener("click", function () {
+  winMusic.pause();
+  playeveryClick();
+  if (count == 0) {
+    playNextTrack();
+    count++;
+  }
+});
+
