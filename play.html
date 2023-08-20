@@ -48,7 +48,7 @@
   </style>
 </head>
 
-<body>
+<body id="autoPlay">
   <h1>Hello <span id="username"></span>! </h1>
   <h1>Welcome to Connect Four Game</h1>
   <p class="info">Connect four is two player game. Use chrome for best experience.</p>
@@ -86,12 +86,95 @@
 
     </div>
   </section>
+  <audio id="background">
+    <source src="" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <audio id="everyClick">
+    <source src="" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <audio id="winMusic">
+    <source src="" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>  
+  <audio id="loseMusic">
+    <source src="" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
 
   <script>
     var savedName = sessionStorage.getItem("username");
     if (savedName) {
       document.getElementById("username").textContent = savedName;
     }
+  </script>
+
+  <script>
+    const music = [
+      'music/1.mp3',
+      'music/2.mp3',
+      'music/3.mp3',
+      'music/4.mp3',
+      'music/5.mp3'
+    ];
+
+    var currentTrackIndex = Math.floor(Math.random() * music.length); // Generate a random index
+
+    var background = document.getElementById("background");
+    var autoPlay = document.getElementById("autoPlay");
+    var winMusic = document.getElementById("winMusic");
+    var loseMusic = document.getElementById("loseMusic");
+    var count =0 ;
+    background.volume = 0.5;
+    everyClick.volume = 0.8;
+
+
+    // Function to play the current background and move to the next track
+    function playNextTrack() {
+      background.src = music[currentTrackIndex];
+      background.currentTime = 0;
+      background.play();
+      currentTrackIndex = (currentTrackIndex + 1) % music.length; // Move to the next track
+    }
+
+    function playeveryClick() {
+      everyClick.src = "m.mp3";
+      everyClick.currentTime = 0;
+      everyClick.play();
+    }
+
+    function winMusicPlay() {
+      loseMusic.pause();
+      background.pause();
+      winMusic.src = "win.mp3";
+      winMusic.currentTime = 0;
+      winMusic.play();
+    }
+    function loseMusicPlay() {
+      background.pause();
+      winMusic.pause();
+      loseMusic.src = "end.mp3";
+      loseMusic.currentTime = 0;
+      loseMusic.play();
+    }
+
+    // Call the playNextTrack function when the background ends
+    background.addEventListener("ended", playNextTrack);
+
+    autoPlay.addEventListener("click", function () {
+      winMusic.pause();
+      playeveryClick();
+      if(count==0){
+        playNextTrack();
+        count ++;
+      }
+    });
+
+
 
 
 

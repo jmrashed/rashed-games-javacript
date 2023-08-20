@@ -170,8 +170,12 @@ function checkForMoveVictory() {
 
 
     addWinnerWithCurrentTimeAndUpdateSession(ww);
+    if (ww == 'Computer') {
+      winMusicPlay();
 
-
+    } else {
+      loseMusicPlay();
+    }
     Swal.fire({
       title: ww + " wins!!",
       icon: "success",
@@ -206,7 +210,7 @@ function moveit(who, where) {
   document.getElementById('d' + who).style.top = where + 'px';
 }
 
- 
+
 
 function addWinnerWithCurrentTimeAndUpdateSession(name) {
 
@@ -223,7 +227,7 @@ function addWinnerWithCurrentTimeAndUpdateSession(name) {
 
 function displayWinners() {
   const storedWinnersJSON = sessionStorage.getItem('winnersData');
-  const storedWinners = JSON.parse(storedWinnersJSON) || []; 
+  const storedWinners = JSON.parse(storedWinnersJSON) || [];
   const winnersList = document.getElementById('winnersList');
 
   winnersList.innerHTML = '';
@@ -237,4 +241,4 @@ function displayWinners() {
 
 
 
-    displayWinners();
+displayWinners();
