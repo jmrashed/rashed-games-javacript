@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Connect Four Game | Jmrashed</title>
+    <meta name="description"
+        content="A simple web-based implementation of the classic Connect Four game using HTML, CSS, and JavaScript.">
+    <meta name="author" content="Md Rasheduzzaman">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Open Graph meta tags for social media sharing -->
+    <meta property="og:title" content="Connect Four Game">
+    <meta property="og:description" content="Play the classic Connect Four game online.">
+    <meta property="og:image" content="screenshot.png">
+    <meta property="og:url" content="https://yourwebsite.com">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card meta tags for Twitter sharing -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Connect Four Game">
+    <meta name="twitter:description" content="Play the classic Connect Four game online.">
+    <meta name="twitter:image" content="./assets/img/screenshot.png">
+
+    <!-- Favicon -->
+    <link rel="icon" href="./assets/img/favicon.ico" type="image/x-icon">
+    <!-- Add Bootstrap CSS CDN link -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <div class="container mt-5">
+        <div class="row">
+            <div id="game-area">
+                <header>
+                    <img src="capdell-logo-tic-tac-toe.png" alt="">
+                    <h1>TIC TAC TOE</h1>
+                    <h3>Developed Md Rasheduzzaman</h3>
+                </header>
+                <div id="game-board">
+                    <br>
+                    <br>
+                    <div id="scores">
+                        <h2>Scores:</h2>
+                        <div>
+                            <h3>Player 1:
+                                <span id="scoreP1">&nbsp;0</span>
+                            </h3>
+                            <h3>Player 2:
+                                <span id="scoreP2">&nbsp;0</span>
+                            </h3>
+                            <h3>Draws:
+                                <span id="draws">&nbsp;0</span>
+                            </h3>
+                        </div>
+                    </div>
+                    <h3>Round:
+                        <span id="round">1</span>
+                    </h3>
+                    <div id="player-turn"></div>
+                    <ul>
+                        <div id="board">
+                            <div id="row1">
+                                <li id="r1c1" class="" onclick="mark(event)" onmouseover="playSound();"
+                                    style="background-color: rgba(255,255,255,0);">+</li>
+                                <li id="r1c2" class="" onclick="mark(event)" onmouseover="playSound();"
+                                    style="background-color: rgba(255,255,255,0);border-left:solid #ff9aad 0.5vw;border-right:solid #ff9aad 0.5vw;">
+                                    +</li>
+                                <li id="r1c3" class="" onclick="mark(event)" onmouseover="playSound();"
+                                    style="background-color: rgba(255,255,255,0);">+</li>
+                            </div>
+                            <div id="row2">
+                                <li id="r2c1" class="" onclick="mark(event)" onmouseover="playSound();"
+                                    style="background-color: rgba(255,255,255,0); border-top:solid #ff9aad 0.5vw; border-bottom:solid #ff9aad 0.5vw;">
+                                    +</li>
+                                <li id="r2c2" class="" onclick="mark(event)" onmouseover="playSound();"
+                                    style="background-color: rgba(255,255,255,0); border:solid #ff9aad 0.5vw;">+</li>
+                                <li id="r2c3" class="" onclick="mark(event)" onmouseover="playSound();"
+                                    style="background-color: rgba(255,255,255,0); border-top:solid #ff9aad 0.5vw;border-bottom:solid #ff9aad 0.5vw;">
+                                    +</li>
+                            </div>
+                            <div id="row3">
+                                <li id="r3c1" class="" onclick="mark(event)" onmouseover="playSound();"
+                                    style="background-color: rgba(255,255,255,0);">+</li>
+                                <li id="r3c2" class="" onclick="mark(event)" onmouseover="playSound();"
+                                    style="background-color: rgba(255,255,255,0); border-left:solid #ff9aad 0.5vw;border-right:solid #ff9aad 0.5vw;">
+                                    +</li>
+                                <li id="r3c3" class="" onclick="mark(event)" onmouseover="playSound();"
+                                    style="background-color: rgba(255,255,255,0);">+</li>
+                            </div>
+                        </div>
+                    </ul>
+                </div>
+                <div id="result"></div>
+                <audio preload="auto" id="click" src="http://d.zaix.ru/bAoz.mp3"></audio>
+                <audio preload="auto" id="victory" src="http://d.zaix.ru/bAoB.mp3"></audio>
+                <audio preload="auto" id="click-hover" src="http://d.zaix.ru/bAoD.mp3"></audio>
+                <div id="menu">
+                    <button type="menu" id="reset-button" onclick="nextRound();" onmouseover="playSound();">Next
+                        Round</button>
+                    <button type="menu" id="next-button" onclick="reset()" onmouseover="playSound();">Reset
+                        Game</button>
+                </div>
+            </div>
+       
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>
