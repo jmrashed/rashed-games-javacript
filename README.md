@@ -2,7 +2,9 @@
 
 A simple web-based implementation of the classic Connect Four game using HTML, CSS, and JavaScript.
 
-![Screenshot 1](assets/img/screenshot1.png)
+![Screenshot 1](assets/img/games/home.png)
+
+
 ![Screenshot 2](assets/img/screenshot.png)
 
 # Live
