@@ -34,17 +34,60 @@
 <body>
     <div class="container mt-5">
         <div class="row">
-            <div class="col-lg-7">
-                <h1>Welcome to Connect Four Game</h1>
-                <p class="info">Connect four is two player game. Use chrome for best experience.</p>
-                <label for="name">Enter your name: </label>
-                <input type="text" id="name" class="form-control">
-                <button class="btn btn-primary mt-2" onclick="saveName()">Save</button>
+            <div class="col-lg-12">
+                <h1>
+                    <span>R</span>
+                    <span>a</span>
+                    <span>h</span>
+                    <span>e</span>
+                    <span>d'</span>
+                    <span>s</span>
+                    <span>G</span>
+                    <span>a</span>
+                    <span>m</span>
+                    <span>e</span>
+                  </h1> 
             </div>
-            <div class="col-lg-5">
-                <img src="./assets/img/game.webp" class="img img-responsive" alt="">
+            <div class="col-lg-12">
+             
+                <p class="info">Don't forget to feedbak or share your gamming expereince </p>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-lg-9">
+                <label for="name">Enter your name: </label>
+                <input type="text" id="name" class="form-control" placeholder="Enter Your Name">
+
+            </div>
+            <div class="col-lg-3">
+                <br>
+                <button class="btn btn-primary mt-2" onclick="saveName()">Save</button>
+
             </div>
         </div>
+        <div class="row mt-5">
+            <div class="col-lg-4">
+                <a href="play.html" class="game-anchor">
+                    <img src="./assets/img/games/connector.png" class="img img-responsive _game-image" alt="">
+                </a>
+            </div>
+            <div class="col-lg-4">
+                <a href="./snake-game/index.html" class="game-anchor">
+                    <img src="./assets/img/games/snake.png" class="img img-responsive _game-image" alt="">
+                </a>
+            </div>
+            <div class="col-lg-4">
+                <a href="./tictactoe/index.html" class="game-anchor">
+                    <img src="./assets/img/games/tiktok.png" class="img img-responsive _game-image" alt="">
+                </a>
+            </div>
+            <audio id="_initial">
+                <source src="" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+    </div>
     </div>
     <!-- Add Bootstrap JS CDN link (optional, for enhanced functionality) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -56,9 +99,6 @@
     <script>
         // Check if a name is already saved in session and display a greeting.
         var savedName = sessionStorage.getItem("username");
-        if (savedName === null) {
-            savedName = "player";
-        }
 
         if (savedName) {
             document.getElementById("name").value = savedName;
@@ -75,7 +115,30 @@
                 timer: 2000,
                 position: "bottom"
             });
+        } else {
+            savedName = "player";
+            document.getElementById("name").value = savedName;
+
         }
+
+
+        $('.game-anchor').hover(
+            function () { // Function to run when mouse enters
+                const path = "assets/music/m.mp3";
+                var _initial = document.getElementById("_initial");
+                _initial.src = path;
+                _initial.currentTime = 0;
+                _initial.play();
+            },
+            function () { // Function to run when mouse leaves
+                var _initial = document.getElementById("_initial");
+                _initial.pause();
+                _initial.currentTime = 0;
+            }
+        );
+
+
+
 
     </script>
 </body>

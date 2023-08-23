@@ -6,7 +6,7 @@ body{
   h1{
     text-align:center;
     margin-bottom:5px;
-    color: #9c9c9c;
+    color: #cccccc;
   }
   
   p.info{
@@ -259,3 +259,111 @@ aside {
   border-bottom: 1px solid #b5a1fd;
   padding: 10px;
 }
+._game-image{
+  width: 100% !important;
+}
+.game-anchor:hover{
+  /* border: 1px solid #009b90 !important; */
+  display: block;
+}
+
+img {
+  --g: 4px;     /* the gap */
+  --b: 12px;    /* border thickness*/
+  --c: #03ffee; /* the color */
+  
+  
+  padding: calc(var(--g) + var(--b));
+  --_c: #0000 0 25%, var(--c) 0 50%;
+  --_g1: repeating-linear-gradient(90deg ,var(--_c)) repeat-x;
+  --_g2: repeating-linear-gradient(180deg,var(--_c)) repeat-y;
+  background:
+    var(--_g1) var(--_p, 25%) 0   ,var(--_g2) 0    var(--_p,125%),
+    var(--_g1) var(--_p,125%) 100%,var(--_g2) 100% var(--_p, 25%);
+  background-size: 200% var(--b),var(--b) 200%;
+  cursor: pointer;
+  filter: grayscale(50%);
+  transition: .3s;
+}
+img:hover {
+  --_p: 75%;
+  filter: grayscale(0%);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* game title  */
+ 
+ 
+
+h1 span {
+  font-size: 10rem;
+  font-family: 'Bad Script', cursive;
+  color: #111;
+  animation: glowing 2s linear infinite;
+}
+
+@keyframes glowing {
+  0%, 100% {
+    color: #fff;
+    filter: blur(2px);
+    text-shadow: 0 0 10px #00b3ff,
+                 0 0 20px #00b3ff,
+                 0 0 40px #00b3ff,
+                 0 0 80px #00b3ff,
+                 0 0 120px #00b3ff,
+                 0 0 200px #00b3ff,
+                 0 0 300px #00b3ff,
+                 0 0 400px #00b3ff;
+  } 5%, 95% {
+    color: #111;
+    text-shadow: none;
+    filter: blur(0px);
+  }
+}
+
+h1 span:nth-child(1){
+  animation-delay: 0s;
+}
+
+h1 span:nth-child(2){
+  animation-delay: .25s;
+}
+
+h1 span:nth-child(3){
+  animation-delay: .5s;
+}
+
+h1 span:nth-child(4){
+  animation-delay: .75s;
+}
+
+h1 span:nth-child(5){
+  animation-delay: 1s;
+}
+
+h1 span:nth-child(6){
+  animation-delay: 1.25s;
+}
+
+h1 span:nth-child(7){
+  animation-delay: 1.5s;
+}
+
+h1 span:nth-child(8){
+  animation-delay: 1.75s;
+}
+ 
+
+/* game title  */

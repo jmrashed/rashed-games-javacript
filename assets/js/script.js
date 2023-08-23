@@ -5,6 +5,10 @@ var currentRow;
 var currentPlayer;
 var id = 1;
 
+const storedWinnersJSON = sessionStorage.getItem('winnersData');
+const storedWinners = JSON.parse(storedWinnersJSON) || [];
+const winnersList = document.getElementById('winnersList');
+
 const music = [
   'assets/music/1.mp3',
   'assets/music/2.mp3',
@@ -16,12 +20,18 @@ const music = [
 var currentTrackIndex = Math.floor(Math.random() * music.length); // Generate a random index
 
 var background = document.getElementById("background");
+
 var autoPlay = document.getElementById("autoPlay");
 var winMusic = document.getElementById("winMusic");
 var loseMusic = document.getElementById("loseMusic");
 var count = 0;
+if (board) {
+  background.volume = 0.5;
+  everyClick.volume = 0.8;
 
-newgame();
+  newgame();
+
+}
 
 function newgame() {
   prepareField();
@@ -123,16 +133,20 @@ function Disc(player) {
   this.id = id.toString();
   id++;
 
+
   this.addToScene = function () {
-    board.innerHTML += '<div id="d' + this.id + '" class="disc ' + this.color + '"></div>';
-    if (currentPlayer == 2) {
-      //computer move
-      var possibleMoves = think();
-      var cpuMove = Math.floor(Math.random() * possibleMoves.length);
-      currentCol = possibleMoves[cpuMove];
-      document.getElementById('d' + this.id).style.left = (14 + 60 * currentCol) + "px";
-      dropDisc(this.id, currentPlayer);
+    if (board) {
+      board.innerHTML += '<div id="d' + this.id + '" class="disc ' + this.color + '"></div>';
+      if (currentPlayer == 2) {
+        //computer move
+        var possibleMoves = think();
+        var cpuMove = Math.floor(Math.random() * possibleMoves.length);
+        currentCol = possibleMoves[cpuMove];
+        document.getElementById('d' + this.id).style.left = (14 + 60 * currentCol) + "px";
+        dropDisc(this.id, currentPlayer);
+      }
     }
+
   }
 
   var $this = this;
@@ -244,29 +258,39 @@ function addWinnerWithCurrentTimeAndUpdateSession(name) {
 
 
 function displayWinners() {
-  const storedWinnersJSON = sessionStorage.getItem('winnersData');
-  const storedWinners = JSON.parse(storedWinnersJSON) || [];
-  const winnersList = document.getElementById('winnersList');
+  if (winnersList) {
+    winnersList.innerHTML = '';
+    storedWinners.forEach((winner) => {
+      const listItem = document.createElement('div');
+      listItem.className = 'winner-item';
+      listItem.textContent = `Winner: ${winner.name}, Time: ${winner.time}`;
+      winnersList.appendChild(listItem);
+    });
 
-  winnersList.innerHTML = '';
-  storedWinners.forEach((winner) => {
-    const listItem = document.createElement('div');
-    listItem.className = 'winner-item';
-    listItem.textContent = `Winner: ${winner.name}, Time: ${winner.time}`;
-    winnersList.appendChild(listItem);
-  });
+  }
 }
 
-
-
-displayWinners();
+if (board)
+  displayWinners();
 
 
 function saveName() {
   var name = document.getElementById("name").value;
   if (name.trim() !== "") {
     sessionStorage.setItem("username", name);
-    window.location.href = "play.html";
+
+    Swal.fire({
+      icon: 'info',
+      title: 'Mr. ' + name,
+      text: "Save your name. Keep playing...",
+      showConfirmButton: false,
+      customClass: {
+        popup: 'slow-fade-in' // Apply the CSS class for animation
+      },
+      timer: 2000,
+      position: "top"
+    });
+    // window.location.href = "play.html";
   } else {
     alert("Please enter a valid name.");
   }
@@ -279,8 +303,6 @@ if (savedName) {
   document.getElementById("username").textContent = savedName;
 }
 
-background.volume = 0.5;
-everyClick.volume = 0.8;
 
 
 // Function to play the current background and move to the next track
@@ -312,9 +334,10 @@ function loseMusicPlay() {
   loseMusic.play();
 }
 
+if(background)
 // Call the playNextTrack function when the background ends
 background.addEventListener("ended", playNextTrack);
-
+if(autoPlay)
 autoPlay.addEventListener("click", function () {
   winMusic.pause();
   playeveryClick();
