@@ -241,17 +241,18 @@ body {
 
 /* play  */
 aside {
-  width: 200px;
-  max-width: 200px;
-  position: absolute;
-  bottom: 100px;
-  right: 0;
-  background-color: #957af7;
-  padding: 20px;
-  box-shadow: -5px 0 10px rgba(0, 0, 0, 0.1);
-  z-index: 9999 !important;
-  max-height: 500px !important;
-  overflow-y: auto;
+	width: 200px;
+	max-width: 200px;
+	position: absolute;
+	bottom: 100px;
+	right: 0;
+	background-color: #957af7;
+	padding: 2px 20px;
+	box-shadow: -5px 0 10px rgba(0, 0, 0, 0.1);
+	z-index: 9999 !important;
+	max-height: 500px !important;
+	overflow-y: auto;
+	border-radius: 5px 0 0 5px;
 }
 
 .winner-item {
